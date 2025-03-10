@@ -15,6 +15,11 @@
             "Fredy016\\DocfavPruebaTecnica\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Fredy016\\Test\\DocfavPruebaTecnica\\": "test/"
+        }
+    },
     "authors": [
         {
             "name": "fredy016",
