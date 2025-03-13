@@ -5,6 +5,7 @@ namespace Src\Infrastructure\Persistence\Doctrine;
 use Src\Domain\User\Entity\User;
 use Src\Domain\User\Repository\UserRepositoryInterface;
 use Src\Domain\User\ValueObject\ID;
+use Src\Domain\User\ValueObject\Email;
 use Doctrine\ORM\EntityManagerInterface;
 
 class DoctrineUserRepository implements UserRepositoryInterface
@@ -25,6 +26,11 @@ class DoctrineUserRepository implements UserRepositoryInterface
     public function findById(ID $id): ?User
     {
         return $this->entityManager->find(User::class, $id->getValue());
+    }
+
+    public function findByEmail(Email $email): ?User
+    {
+        return $this->entityManager->find(User::class, $email->getValue());
     }
 
     public function delete(ID $id): void
