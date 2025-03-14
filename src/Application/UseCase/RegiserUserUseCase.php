@@ -25,7 +25,7 @@ final class RegisterUserUseCase
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    public function execute(RegisterUserRequest $request): void
+    public function execute(RegisterUserRequest $request): User
     {
         if ($this->userRepository->findByEmail(new Email($request->email))) {
             throw new DomainException("El email ya está registrado.");
@@ -41,5 +41,7 @@ final class RegisterUserUseCase
         $this->userRepository->save($user);
 
         $this->eventDispatcher->dispatch(new UserRegisteredEvent($user));
+
+        return $user;
     }
 }
