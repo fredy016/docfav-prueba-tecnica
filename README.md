@@ -39,8 +39,8 @@ Este proyecto utiliza PHP 7.4 con Composer y Doctrine ORM para la gestión de ba
 ### 1. Clonar el repositorio
 
 ```sh
-git clone <repositorio-url>
-cd <repositorio>
+git clone https://github.com/fredy016/docfav-prueba-tecnica
+cd docfav-prueba-tecnica
 ```
 
 ### 2. Configurar variables de entorno
