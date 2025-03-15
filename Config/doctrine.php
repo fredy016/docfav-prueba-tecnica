@@ -11,10 +11,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-$config = ORMSetup::createAttributeMetadataConfiguration(
-    paths: [__DIR__ . '/../src/Domain'],
-    isDevMode: true
-);
+$paths =  [__DIR__ . '/../config/mappings'];
+
+$config = ORMSetup::createXMLMetadataConfiguration($paths,true);
+
 
 $connection = DriverManager::getConnection([
     'dbname'   => $_ENV['DB_NAME'] ?? 'my_database',

@@ -8,11 +8,11 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\NullLogger;
 
 use Src\Infrastructure\Event\EventDispatcher;
-use Src\Controller\RegisterUserController;
+use Src\Infrastructure\Controller\RegisterUserController;
 use Src\Application\UseCase\RegisterUserUseCase;
 use Src\Domain\User\Event\UserRegisteredEvent;
 use Src\Domain\User\Repository\UserRepositoryInterface;
-use Src\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
+use Src\Infrastructure\Repository\DoctrineUserRepository;
 use Src\Infrastructure\Event\SendWelcomeEmailHandler;
 use Src\Infrastructure\DI\Container;
 
@@ -33,7 +33,10 @@ $path = $request->getPathInfo();
 
 $controller = $container->get(RegisterUserController::class);
 
-if ($path === '/user/register' && $request->getMethod() === 'POST') {
+echo $path;
+
+if ($path === '/') {
+    echo "Entro en cntrolador";
     $response = $controller->register($request);
 } else {
     $response = new JsonResponse(['error' => 'Ruta no encontrada'], 404);
