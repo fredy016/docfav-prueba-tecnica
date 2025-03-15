@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Controller;
+namespace Src\Infrastructure\Controller;
 
 use Exception;
 
@@ -38,9 +38,10 @@ class RegisterUserController
         try {
             $user = $this->registerUserUseCase->execute($dto);
 
-            $useResponse = new UserResponseDTO($user)->toArray();
+            $userResponse = new UserResponseDTO($user);
+            $userReponseArray = $userResponse->toArray();
 
-            return new JsonResponse($useResponse, JsonResponse::HTTP_CREATED);
+            return new JsonResponse($userReponseArray, JsonResponse::HTTP_CREATED);
 
         } catch (Exception $e) {
             return new JsonResponse(['error' => $e->getMessage()], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
