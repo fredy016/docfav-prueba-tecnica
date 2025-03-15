@@ -33,12 +33,10 @@ $path = $request->getPathInfo();
 
 $controller = $container->get(RegisterUserController::class);
 
-echo $path;
-
 if ($path === '/') {
-    echo "Entro en cntrolador";
     $response = $controller->register($request);
 } else {
     $response = new JsonResponse(['error' => 'Ruta no encontrada'], 404);
 }
+
 $response->send();
